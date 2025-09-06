@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Feedback - The Isle of Man Bus Planner</title>
+		<title>Course Closures - The Isle of Man Bus Planner</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -46,19 +46,53 @@
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>Feedback</h1>
+										<h1>Course Closures</h1>
 									</header>
 									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
-									<p>This project heavily depends on feedback from the users. While the core part of the scheduling information comes from the Bus Vannin schedules and route change notifications, that is not the only source of information used by this app. We also get information from the users themselves. So we really encourage feedback. This feedback may be technical bugs in the app but it may also be errors in the schedule or even information on, for example, bus stops that are unmarked or hard to find.
-										
-									There are various ways feedback can be provided:
-									<UL>
-										<LI>For general comments and discussions, use the Google group: https://groups.google.com/g/isle-of-man-bus-route-app-users. If you are a tester and have early access then you will already be a member of this group.</LI>
-										<LI>For bug reports, please use the issue tracking on Github. Although anyone can open an issue here, we would appreciate it is normal software developer practice is followed, e.g. always check that there is not already open issue covering it, provide detail that would allow someone to reproduce the problem etc. The Github issue tracker is at https://github.com/westbury/iom-bus-planner/issues.</LI>
-										<LI>If the problem is with an actual route, use the "Report Problem" button within the app. This button can be found by scrolling to the bottom of the route details. If the problem is with the list of offered routes (rather than just one of the routes) then just select one of the routes. The advantage of reporting problems this way is that the details of the route (such as origin, destination, and time) are sent with the report. We can paste the report directly into a test case to reproduce the problem.</LI>
-									</UL>
-									
-								</p>
+									<p>
+										The Isle of Man has a unique requirement from a bus app. It must be able to cope
+										with course closures, specifically the TT Course during TT fortnight and the Manx Grand Prix,
+										and the Billown Course during the Southern 100.
+									</p><p>
+										Diversions caused by course closures are in many ways similar to other diversions. However they
+										are different from other diversions because the times at which the diversions apply are not predictable.
+										The scheduled time of each course closure and the latest time at which the course will be re-opened are published
+										well in advance. These dates and times are known to the app. If the course always closed and re-opened exactly at
+										the time in the schedule then the course closure diversions would really be no different from any other diversion.
+										The problem is that the times are not predictable, mostly because of weather. Bus Vannin will generally not divert
+										buses unless necessary. So if, say, a two hour delay in the course closure time is announced, Bus Vannin will run
+										its normal schedule for an extra two hours.
+									</p><p>
+										The app does know the race schedule, meaning the one published in advance. However it does not keep
+										up with changes in course closure and re-opening times. It does not
+										monitor the race infoline on Whatsapp (though that would be possible). So it is up to the app user to
+										set the course status. During times that the course may be closed, a slider control appears.
+										The user drags the slider to either the 'course open' position or the 'course closed' position,
+										and the calculated bus routes will adjust accordingly.
+									</p><p>
+										There are actually three possible positions for the slider. Consider a day where the scheduled
+										closure periods are 09:30 to 17:00 and 18:00 to 21:00. Now suppose the current time is 16:30.
+										There are three possibilities 1) it's been a wet day and the Clark of the Course has given up on
+										any racing for the rest of the day. The user selects the 'course open' position and the normal schedule
+										is used, 2) The course is still closed but it has been announced that the course will not
+										be closing for the evening period. The user selects 'closed until 17:00', 3) The course has been opened but it will be closed at 18:00
+										for the evening period, and 4) the course is still closed and will close again at 18:00. Now 4) is unlikely
+									</p><p>											
+										Now 4) may never happen because generally a two-hour open period is required by the Department
+										of Infrastructure. So if the Clark of the Course is planning on using the evening period then
+										the course must be opened by 16:00 (citition required). But that leaves at least option 2) and 3).
+										When these options are selected a hybrid schedule is used, so the user could get a route that shows,
+										say, the 22v bus to Lord Street connecting to a number 5 bus to Crosby.
+									</p><p>
+										The app should be making it clear what is going on. If there is not certainty as to which route
+										a bus is about to take, and the journey depends on the route being one or the other (ie route involves
+										alighting at a stop that is on one route but not the other) then the app should make it clear that the user
+										needs to verify the route with the driver.
+									</p><p>
+										This part of the app is currently a work in progress. As at the time of writing the MGP is wrapping up.
+										We have been paying attention and taking notes during the last two weeks. By the time the TT comes around
+										the app will be happily handling the course closures.
+									</p>
 								</div>
 							</section>
 

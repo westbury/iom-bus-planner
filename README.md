@@ -6,3 +6,5 @@ bus schedule app.
 Anyone with a Github account can create issues and comment on existing issues.
 
 The web pages are published using Github Pages.
+
+These web pages are also deployed to [planmybus.im](planmybus.im). If you go there you will also find the Flutter mobile app running the web version.
