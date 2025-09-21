@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlanMyBus</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .map, .docs {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Narrow screens: stack, only show the active one */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .map, .docs {
+        display: none; /* hide by default */
+        height: calc(100vh - 40px); /* leave space for tab bar */
+      }
+      .map.active, .docs.active {
+        display: block;
+      }
+    }
+
+    .tabs {
+      display: none; /* hidden on wide screen */
+    }
+    @media (max-width: 768px) {
+      .tabs {
+        display: flex;
+        height: 40px;
+      }
+      .tabs button {
+        flex: 1;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <button onclick="showTab('map')">Map</button>
+    <button onclick="showTab('docs')">Docs</button>
+  </div>
+
+  <div class="container">
+    <div id="map" class="map active">
+      <iframe id="mapFrame" src="web/index.html"></iframe>
+    </div>
+    <div id="docs" class="docs">
+      <iframe id="docsFrame" src="docs/index.html"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tab) {
+      document.querySelectorAll('.map, .docs').forEach(el => el.classList.remove('active'));
+      document.getElementById(tab).classList.add('active');
+    }
+  </script>
+</body>
+</html>
